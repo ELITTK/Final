@@ -50,11 +50,6 @@ public class InputMgr : BaseManager<InputMgr>
         if (!isStart)
             return;
 
-        CheckKeyCode(KeyCode.A);
-        CheckKeyCode(KeyCode.W);
-        CheckKeyCode(KeyCode.S);
-        CheckKeyCode(KeyCode.D);
-
     }
 	
 }
