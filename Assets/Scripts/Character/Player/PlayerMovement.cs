@@ -31,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
     }
     void GroundMove()
     {
-        horizontalMove = Input.GetAxis("Horizontal");
+        horizontalMove = Input.GetAxis("Horizontal") * -1;
         verticalMove = Input.GetAxis("Vertical");
-        rigidbd.velocity = new Vector3(horizontalMove * speed * -1, rigidbd.velocity.y, rigidbd.velocity.z);
+        rigidbd.velocity = new Vector3(horizontalMove * speed, rigidbd.velocity.y, rigidbd.velocity.z);
     }
     void AnimControl()
     {
