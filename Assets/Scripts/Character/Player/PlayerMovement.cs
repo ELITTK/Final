@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
-        rigidbd.velocity = new Vector3(horizontalMove * speed, rigidbd.velocity.y, rigidbd.velocity.z);
+        rigidbd.velocity = new Vector3(horizontalMove * speed * -1, rigidbd.velocity.y, rigidbd.velocity.z);
     }
     void AnimControl()
     {
