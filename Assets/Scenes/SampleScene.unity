@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 1896019086}
   - component: {fileID: 1896019090}
   - component: {fileID: 1896019091}
+  - component: {fileID: 1896019092}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -451,7 +452,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.2}
+  m_Size: {x: 0.25092334, y: 2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1896019088
 SpriteRenderer:
@@ -550,6 +551,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &1896019092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896019085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60be89db152b6e14f8c2afd2294e5c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill0: {fileID: 11400000, guid: dedf2cf0debd95f42851a3ce75b93941, type: 2}
 --- !u!850595691 &1964815535
 LightingSettings:
   m_ObjectHideFlags: 0
