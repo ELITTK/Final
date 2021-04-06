@@ -1,5 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
 Shader "Odds/NormalMap" {
 	Properties {
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)
@@ -43,10 +41,6 @@ Shader "Odds/NormalMap" {
 				float3 viewDir : TEXCOORD2;
 			};
 
-			// Unity doesn't support the 'inverse' function in native shader
-			// so we write one by our own
-			// Note: this function is just a demonstration, not too confident on the math or the speed
-			// Reference: http://answers.unity3d.com/questions/218333/shader-inversefloat4x4-function.html
 			float4x4 inverse(float4x4 input) {
 				#define minor(a,b,c) determinant(float3x3(input.a, input.b, input.c))
 				
@@ -82,47 +76,14 @@ Shader "Odds/NormalMap" {
 				o.uv.xy = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
 				o.uv.zw = v.texcoord.xy * _BumpMap_ST.xy + _BumpMap_ST.zw;
 
-				///
-				/// Note that the code below can handle both uniform and non-uniform scales
-				///
-
-				// Construct a matrix that transforms a point/vector from tangent space to world space
 				fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);  
 				fixed3 worldTangent = UnityObjectToWorldDir(v.tangent.xyz);  
 				fixed3 worldBinormal = cross(worldNormal, worldTangent) * v.tangent.w; 
 
-				/*
-				float4x4 tangentToWorld = float4x4(worldTangent.x, worldBinormal.x, worldNormal.x, 0.0,
-												   worldTangent.y, worldBinormal.y, worldNormal.y, 0.0,
-												   worldTangent.z, worldBinormal.z, worldNormal.z, 0.0,
-												   0.0, 0.0, 0.0, 1.0);
-				// The matrix that transforms from world space to tangent space is inverse of tangentToWorld
-				float3x3 worldToTangent = inverse(tangentToWorld);
-				*/
-				
-				//wToT = the inverse of tToW = the transpose of tToW as long as tToW is an orthogonal matrix.
 				float3x3 worldToTangent = float3x3(worldTangent, worldBinormal, worldNormal);
 
-				// Transform the light and view dir from world space to tangent space
 				o.lightDir = mul(worldToTangent, WorldSpaceLightDir(v.vertex));
 				o.viewDir = mul(worldToTangent, WorldSpaceViewDir(v.vertex));
-
-				///
-				/// Note that the code below can only handle uniform scales, not including non-uniform scales
-				/// 
-
-				// Compute the binormal
-//				float3 binormal = cross( normalize(v.normal), normalize(v.tangent.xyz) ) * v.tangent.w;
-//				// Construct a matrix which transform vectors from object space to tangent space
-//				float3x3 rotation = float3x3(v.tangent.xyz, binormal, v.normal);
-				// Or just use the built-in macro
-//				TANGENT_SPACE_ROTATION;
-//				
-//				// Transform the light direction from object space to tangent space
-//				o.lightDir = mul(rotation, normalize(ObjSpaceLightDir(v.vertex))).xyz;
-//				// Transform the view direction from object space to tangent space
-//				o.viewDir = mul(rotation, normalize(ObjSpaceViewDir(v.vertex))).xyz;
-				
 				return o;
 			}
 			
@@ -133,11 +94,7 @@ Shader "Odds/NormalMap" {
 				// Get the texel in the normal map
 				fixed4 packedNormal = tex2D(_BumpMap, i.uv.zw);
 				fixed3 tangentNormal;
-				// If the texture is not marked as "Normal map"
-//				tangentNormal.xy = (packedNormal.xy * 2 - 1) * _BumpScale;
-//				tangentNormal.z = sqrt(1.0 - saturate(dot(tangentNormal.xy, tangentNormal.xy)));
-				
-				// Or mark the texture as "Normal map", and use the built-in funciton
+
 				tangentNormal = UnpackNormal(packedNormal);
 				tangentNormal.xy *= _BumpScale;
 				tangentNormal.z = sqrt(1.0 - saturate(dot(tangentNormal.xy, tangentNormal.xy)));
