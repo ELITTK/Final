@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("³å´ÌÓÃ±äÁ¿")]
     public KeyCode dashKey;
-    public bool canDash, isDash;
+    public bool canDash, isDash, isDirectionalDash;
     public float dashTime, dashSpeed;
     private float dashTimeLeft;
 
@@ -86,10 +86,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void DashExcuting()
     {
-        if (dashTimeLeft > 0)
+        if (!isDirectionalDash)
         {
-            dashTimeLeft -= Time.deltaTime;
-            rigidbd.velocity = new Vector3(horizontalMove * dashSpeed, verticalMove * dashSpeed, 0);
+            if (dashTimeLeft > 0)
+            {
+                dashTimeLeft -= Time.deltaTime;
+                rigidbd.velocity = new Vector3(horizontalMove * dashSpeed, verticalMove * dashSpeed, 0);
+            }
         }
     }
 
