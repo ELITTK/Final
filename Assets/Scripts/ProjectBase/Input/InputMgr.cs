@@ -49,7 +49,8 @@ public class InputMgr : BaseManager<InputMgr>
         //没有开启输入检测 就不去检测 直接return
         if (!isStart)
             return;
-
+        CheckKeyCode(KeyCode.Mouse1);
+        CheckKeyCode(KeyCode.LeftShift);
     }
 	
 }
