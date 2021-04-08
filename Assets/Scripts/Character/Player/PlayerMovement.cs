@@ -9,11 +9,16 @@ public class PlayerMovement : MonoBehaviour
     public bool canDash, isDash;
     public float dashTime, dashSpeed;
     private float dashTimeLeft;
+
+    [Header("跳跃")]
+    public bool canJump;
+    public float maxHoldTime, jumpForceMin;
+    private float holdTime;
+
     [Header("一般")]
-    public float speed;
+    public float speed, jumpSpeed;
 
-    
-
+    private bool isJump;
     private Animator animator;
     private Rigidbody rigidbd;
     private float horizontalMove, verticalMove;
@@ -32,24 +37,23 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxis("Horizontal") * -1;
         verticalMove = Input.GetAxis("Vertical");
-
-        GroundMove();
-
     }
     private void FixedUpdate()
     {
+        GroundMove();
         AnimControl();
         if (canDash)
         {
             DashExcuting();
         }
-        
+        if (canJump)
+        {
+            Jump();
+        }
     }
     void GroundMove()
     {
-
         rigidbd.velocity = new Vector3(horizontalMove * speed, rigidbd.velocity.y, 0);
-
     }
     void AnimControl()
     {
@@ -86,6 +90,25 @@ public class PlayerMovement : MonoBehaviour
         {
             dashTimeLeft -= Time.deltaTime;
             rigidbd.velocity = new Vector3(horizontalMove * dashSpeed, verticalMove * dashSpeed, 0);
+        }
+    }
+
+    /// <summary>
+    /// 根据按下的时长度跳跃的高度有所不同
+    /// </summary>
+    private void Jump()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (holdTime < maxHoldTime)
+            {
+                holdTime += Time.deltaTime;
+                rigidbd.velocity = new Vector3(rigidbd.velocity.x, jumpForceMin, 0);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            holdTime = 0;
         }
     }
 }

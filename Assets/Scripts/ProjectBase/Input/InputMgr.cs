@@ -51,6 +51,7 @@ public class InputMgr : BaseManager<InputMgr>
             return;
         CheckKeyCode(KeyCode.Mouse1);
         CheckKeyCode(KeyCode.LeftShift);
+        CheckKeyCode(KeyCode.Space);
     }
 	
 }
