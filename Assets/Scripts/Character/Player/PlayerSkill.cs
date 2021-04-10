@@ -5,19 +5,18 @@ using UnityEngine;
 public class PlayerSkill : MonoBehaviour
 {
     public SkillData skill0;
-    /*
-    public SkillData skill1;
-    public SkillData skillQ;
-    public SkillData skillW;
-    public SkillData skillE;
-    public SkillData skillR;
-    */
+    public SkillData skillSpecial;
 
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             skill0.UseSkill(this.transform);
+        }
+
+        if (Input.GetKeyDown("f"))
+        {
+            skillSpecial.UseSkill(this.transform);
         }
     }
 
