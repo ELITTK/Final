@@ -114,4 +114,13 @@ public class PlayerMovement : MonoBehaviour
             holdTime = 0;
         }
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            Bullet bullet = other.gameObject.GetComponent<Bullet>();
+            EventCenter.GetInstance().EventTrigger<int>("…À∫¶", bullet.damage);
+        }
+    }
 }
