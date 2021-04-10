@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sk0_FireBall : BaseShoot
+public class Sk1_FastShoot : BaseShoot
 {
     private Transform cameraTransform;
 
@@ -25,10 +25,12 @@ public class Sk0_FireBall : BaseShoot
         float newZ = Mathf.Abs(cameraTransform.position.z);
         mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, newZ));
 
-        Vector3 v = mousePos - new Vector3 (firePoint.position.x, firePoint.position.y, 0);
+        Vector3 v = mousePos - new Vector3(firePoint.position.x, firePoint.position.y, 0);
         Debug.Log("鼠标坐标" + mousePos.ToString());
         Debug.Log("开火点坐标" + firePoint.transform.position.ToString());
-        Debug.Log("两者差值"+v.ToString());
+        Debug.Log("两者差值" + v.ToString());
+
+        firePoint.transform.rotation = Quaternion.Euler(v);
 
         return v;
     }

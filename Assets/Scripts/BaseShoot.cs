@@ -15,7 +15,12 @@ public class BaseShoot : MonoBehaviour
         Shoot_ShootStart();//射击开始事件
 
         Vector3 shootDir = Shoot_GetShootDir();//设置开火方向
+        
+        float tempFloat = shootDir.z;
+        shootDir.z = 0;
         shootDir.Normalize();
+        
+        Debug.Log("射击方向：" + shootDir.ToString());
 
         //生成子弹
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(shootDir));
