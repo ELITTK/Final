@@ -14,15 +14,13 @@ public class SkillData : ScriptableObject
 
     public GameObject skillCaster;//技能释放器
 
-    //public float currentCd,maxCd;还没做
+    public float maxCd = 1;
+
 
     public void UseSkill(Transform ownerTrans)
     {
-        //检查cd，还没做
-
         //给技能释放者生成一个指定的技能释放器，让它来触发具体技能效果。
-        GameObject tempCaster=Instantiate(skillCaster, ownerTrans);
+        GameObject tempCaster = Instantiate(skillCaster, ownerTrans);
         Destroy(tempCaster, 1);
     }
-
 }

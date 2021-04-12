@@ -4,19 +4,42 @@ using UnityEngine;
 
 public class PlayerSkill : MonoBehaviour
 {
-    public SkillData skill0;
-    public SkillData skillSpecial;
+    public List<SkillData> skills;
+
+    public List<float> skillCurrentCD;
+
+    public List<KeyCode> skillKeyCode;
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        for (int i = 0; i < skills.Count; i++)
         {
-            skill0.UseSkill(this.transform);
+            if (Input.GetKey(skillKeyCode[i]))
+            {
+                TouchSkillKey(i);
+            }
         }
 
-        if (Input.GetKeyDown("f"))
+        FreshAllSkill();
+    }
+
+    private void TouchSkillKey(int i)
+    {
+        if (skillCurrentCD[i] <= 0)
         {
-            skillSpecial.UseSkill(this.transform);
+            skills[i].UseSkill(transform);
+            skillCurrentCD[i] = skills[i].maxCd;
+        }
+    }
+
+    private void FreshAllSkill()
+    {
+        for (int i = 0; i < skillCurrentCD.Count; i++)
+        {
+            if (skillCurrentCD[i] > 0)
+            {
+                skillCurrentCD[i] -= Time.deltaTime;
+            }
         }
     }
 

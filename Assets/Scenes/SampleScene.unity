@@ -798,8 +798,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60be89db152b6e14f8c2afd2294e5c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill0: {fileID: 11400000, guid: f391a2c220fb454408f7d39f0bd894eb, type: 2}
-  skillSpecial: {fileID: 11400000, guid: dedf2cf0debd95f42851a3ce75b93941, type: 2}
+  skills:
+  - {fileID: 11400000, guid: f391a2c220fb454408f7d39f0bd894eb, type: 2}
+  - {fileID: 11400000, guid: dedf2cf0debd95f42851a3ce75b93941, type: 2}
+  skillCurrentCD:
+  - 0
+  - 0
+  skillKeyCode: 4301000066000000
 --- !u!850595691 &1964815535
 LightingSettings:
   m_ObjectHideFlags: 0

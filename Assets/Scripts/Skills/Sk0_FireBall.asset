@@ -17,3 +17,4 @@ MonoBehaviour:
   skillName: "\u706B\u7403\u672F"
   skillDes: "\u53D1\u5C04\u4E00\u4E2A\u5C0F\u706B\u7403"
   skillCaster: {fileID: 4276641362547265302, guid: affbff933fde6e94aa49f06a9a1e94d7, type: 3}
+  maxCd: 0.9
