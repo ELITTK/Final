@@ -37,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxis("Horizontal") * -1;
         verticalMove = Input.GetAxis("Vertical");
+
+        if (canJump)
+        {
+            Jump();
+        }
     }
     private void FixedUpdate()
     {
@@ -46,10 +51,7 @@ public class PlayerMovement : MonoBehaviour
         {
             DashExcuting();
         }
-        if (canJump)
-        {
-            Jump();
-        }
+        
     }
     void GroundMove()
     {
