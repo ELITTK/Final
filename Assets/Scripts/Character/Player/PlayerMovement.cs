@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("一般")]
     public float speed, jumpSpeed;
 
-    private bool isJump;
+    private bool isJump, resetJumpFlag, resetJumpTimeFlag;
     private Animator animator;
     private Rigidbody rigidbd;
     private float horizontalMove, verticalMove;
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         InputMgr.GetInstance().StartOrEndCheck(true);
         EventCenter.GetInstance().AddEventListener<KeyCode>("某键按下", JudgementCenter);
+        //EventCenter.GetInstance().AddEventListener("地面检测", ResetJump);
         animator = GetComponent<Animator>();
         rigidbd = GetComponent<Rigidbody>();
     }
@@ -37,16 +38,14 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxis("Horizontal") * -1;
         verticalMove = Input.GetAxis("Vertical");
-
-        if (canJump)
-        {
-            Jump();
-        }
+        Jump();
+        ResetJump();
     }
     private void FixedUpdate()
     {
         GroundMove();
         AnimControl();
+        
         if (canDash)
         {
             DashExcuting();
@@ -103,26 +102,57 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Jump()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (canJump)
         {
-            if (holdTime < maxHoldTime)
+            if (Input.GetKey(KeyCode.Space))
             {
-                holdTime += Time.deltaTime;
-                rigidbd.velocity = new Vector3(rigidbd.velocity.x, jumpForceMin, 0);
+                if (holdTime < maxHoldTime)
+                {
+                    resetJumpTimeFlag = false;
+                    holdTime += Time.deltaTime;
+                    rigidbd.velocity = new Vector3(rigidbd.velocity.x, jumpForceMin, 0);
+                }
+                else if (!resetJumpTimeFlag)
+                {
+                    resetJumpTimeFlag = true;
+                    canJump = false;
+                    //Debug.Log("1");
+                }
             }
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            holdTime = 0;
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                if (holdTime < maxHoldTime)
+                {
+                    canJump = false;
+                    //Debug.Log("2");
+                }
+                holdTime = 0;
+                
+            }
         }
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.CompareTag("BulletEnemy"))
         {
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             EventCenter.GetInstance().EventTrigger<int>("伤害", bullet.damage);
+        }
+    }
+
+    private void ResetJump()
+    {
+        if(rigidbd.velocity.y < -0.1f && ! resetJumpFlag)
+        {
+            resetJumpFlag = true;
+            //Debug.Log("true");
+        }
+        if (rigidbd.velocity.y >= -0.1f && resetJumpFlag)
+        {
+            //Debug.Log("false");
+            resetJumpFlag = false;
+            canJump = true;
         }
     }
 }

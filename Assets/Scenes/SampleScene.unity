@@ -642,6 +642,7 @@ GameObject:
   - component: {fileID: 1896019090}
   - component: {fileID: 1896019091}
   - component: {fileID: 1896019092}
+  - component: {fileID: 1896019093}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -676,8 +677,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.32041043, y: 1.7456758, z: 0.2}
-  m_Center: {x: 0.034743577, y: 0.12716213, z: 0}
+  m_Size: {x: 0.48101783, y: 0.9566605, z: 0.2}
+  m_Center: {x: -0.04556012, y: 0.52166975, z: 0}
 --- !u!212 &1896019088
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -805,6 +806,19 @@ MonoBehaviour:
   - 0
   - 0
   skillKeyCode: 4301000066000000
+--- !u!135 &1896019093
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896019085}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.36
+  m_Center: {x: -0.08, y: -0.37, z: 0}
 --- !u!850595691 &1964815535
 LightingSettings:
   m_ObjectHideFlags: 0
