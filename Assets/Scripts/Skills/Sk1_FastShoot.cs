@@ -28,4 +28,5 @@ public class Sk1_FastShoot : BaseShoot
 
         return v;
     }
+
 }

@@ -10,6 +10,8 @@ public class PlayerSkill : MonoBehaviour
 
     public List<KeyCode> skillKeyCode;
 
+    //public List<GameObject> skillCaster;
+
     private void Update()
     {
         for (int i = 0; i < skills.Count; i++)

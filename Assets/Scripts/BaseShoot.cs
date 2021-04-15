@@ -19,8 +19,6 @@ public class BaseShoot : MonoBehaviour
         float tempFloat = shootDir.z;
         shootDir.z = 0;
         shootDir.Normalize();
-        
-        Debug.Log("射击方向：" + shootDir.ToString());
 
         //生成子弹
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(shootDir));
