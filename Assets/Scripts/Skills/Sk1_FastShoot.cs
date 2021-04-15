@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Sk1_FastShoot : BaseShoot
 {
-    private Transform cameraTransform;
-
-    public void Awake()
+    public override void ExcuteSkill()
     {
-        cameraTransform = GameObject.Find("Main Camera").transform;
-    }
-
-    public void Start()
-    {
+        GetComponent<ParticleSystem>().Play();
         Shoot();
     }
 

@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseShoot : MonoBehaviour
+public class BaseShoot : BaseSkillCaster
 {
+    [Header("射击")]
     public Transform firePoint;//开火点
     public GameObject bulletPrefab;//射出子弹类型
     public float bulletDmg = 10;//子弹伤害
     public float bulletForce = 20.0f;//子弹初速度
 
+
+    public override void ExcuteSkill()
+    {
+        Shoot();
+    }
 
     public void Shoot()//开火！！！
     {
@@ -16,7 +22,6 @@ public class BaseShoot : MonoBehaviour
 
         Vector3 shootDir = Shoot_GetShootDir();//设置开火方向
         
-        float tempFloat = shootDir.z;
         shootDir.z = 0;
         shootDir.Normalize();
 
@@ -73,5 +78,6 @@ public class BaseShoot : MonoBehaviour
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.AddForce(shootDir * bulletForce, ForceMode.Impulse);
     }
+
 }
 

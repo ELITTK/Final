@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f561151fe188742a7f8daa4c6d2969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillData: {fileID: 11400000, guid: dedf2cf0debd95f42851a3ce75b93941, type: 2}
   firePoint: {fileID: 1464259110732552870}
   bulletPrefab: {fileID: 1743632168414681806, guid: aa6c36056ec029f4d92aae5c7cbff45a, type: 3}
   bulletDmg: 10
