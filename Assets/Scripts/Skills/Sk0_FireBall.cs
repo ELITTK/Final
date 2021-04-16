@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Sk0_FireBall : BaseShoot
 {
+    private Transform cameraTransform;
+
+    public void Awake()
+    {
+        cameraTransform = GameObject.Find("Main Camera").transform;
+    }
 
     public void Start()
     {
-        //Shoot();
+        Shoot();
     }
 
 
