@@ -48,3 +48,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1743632168414681806, guid: aa6c36056ec029f4d92aae5c7cbff45a, type: 3}
   bulletDmg: 10
   bulletForce: 17
+  poolList: []
