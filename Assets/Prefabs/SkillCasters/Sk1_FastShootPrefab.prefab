@@ -4787,6 +4787,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4829966847286675071, guid: 1bce4a33164ad7140b75e12d7b9c1d4c, type: 3}
   bulletDmg: 10
   bulletForce: 35
+  poolList: []
 --- !u!198 &9046982746607648056
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4803,7 +4804,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

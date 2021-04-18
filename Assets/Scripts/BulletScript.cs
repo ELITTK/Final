@@ -10,7 +10,7 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
