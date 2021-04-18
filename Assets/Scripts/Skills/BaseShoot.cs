@@ -2,40 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseShoot : BaseSkillCaster
+public class BaseShoot : MonoBehaviour
 {
-    [Header("射击")]
     public Transform firePoint;//开火点
     public GameObject bulletPrefab;//射出子弹类型
     public float bulletDmg = 10;//子弹伤害
     public float bulletForce = 20.0f;//子弹初速度
 
-    [Header("对象池")]//简易版 暂时没用框架
-    public List<GameObject> poolList;//对象池
-
-
-    public override void ExcuteSkill()
-    {
-        Shoot();
-    }
 
     public void Shoot()//开火！！！
     {
         Shoot_ShootStart();//射击开始事件
 
         Vector3 shootDir = Shoot_GetShootDir();//设置开火方向
-
+        
+        float tempFloat = shootDir.z;
         shootDir.z = 0;
         shootDir.Normalize();
+        
+        Debug.Log("射击方向：" + shootDir.ToString());
 
         //生成子弹
-        GameObject bullet = PopPool();
-        bullet.SetActive(true);
-        bullet.transform.position = firePoint.position;
-
-
-        //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(shootDir));
-
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(shootDir));
         /*
         if (shootDir.x < 0)//子弹左右方向
         {
@@ -51,33 +39,6 @@ public class BaseShoot : BaseSkillCaster
         //Shoot_ShootOver();
     }
 
-    /*
-    public void PushPool(GameObject go)
-    {
-        if (poolList.Count<poolMaxSize )
-        {
-            poolList.Add(go);
-        }
-        else
-        {
-            Destroy(go);
-        }
-    }*/
-
-    public GameObject PopPool()
-    {
-        foreach (GameObject obj in poolList)
-        {
-            if (obj.activeSelf == false)
-            {
-                return obj;
-            }
-        }
-        GameObject bullet = Instantiate(bulletPrefab);
-        poolList.Add(bullet);
-
-        return bullet;
-    }
 
     protected virtual void Shoot_ShootStart()//射击开始时的事件，在子类里覆盖
     {
@@ -86,7 +47,7 @@ public class BaseShoot : BaseSkillCaster
 
     protected virtual Vector3 Shoot_GetShootDir()//返回射击方向，在子类里覆盖
     {
-        return firePoint.position - transform.position;//开火方向
+        return firePoint.position-transform.position;//开火方向
     }
 
 
@@ -114,6 +75,5 @@ public class BaseShoot : BaseSkillCaster
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.AddForce(shootDir * bulletForce, ForceMode.Impulse);
     }
-
 }
 

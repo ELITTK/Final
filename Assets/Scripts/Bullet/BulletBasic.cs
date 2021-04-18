@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class BulletBasic : Bullet
 {
-    public float speed;
+    public float speed, timeLimit;
     public GameObject startPoint, endPoint;
 
     private static BulletBasic instance;
     private Vector3 direction;
+    private float time;
     private void Start()
     {
-        instance = this;
-        instance.transform.position = startPoint.transform.position;
-        DirectionSet();
+        gameObject.transform.position = startPoint.transform.position;
     }
 
     // Update is called once per frame
@@ -24,7 +23,12 @@ public class BulletBasic : Bullet
 
     private void Movement()
     {
-        instance.transform.position += direction * speed; 
+        if (time < timeLimit)
+        {
+            DirectionSet();
+            time += Time.deltaTime;
+        }
+        gameObject.transform.position += direction * speed; 
     }
 
     private void DirectionSet()
@@ -35,9 +39,27 @@ public class BulletBasic : Bullet
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "BulletEndPoint")
+        if (other.CompareTag("BulletEndPoint"))
         {
-            Destroy(instance);
+            Destroy(gameObject);
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+        
+    }
+
+    public void SetTarget(Transform tar)
+    {
+        endPoint.transform.position = tar.transform.position;
+    }
+
+    public void SetSpeed(float sp)
+    {
+       speed = sp;
     }
 }
