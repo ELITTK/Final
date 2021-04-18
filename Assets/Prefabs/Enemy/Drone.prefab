@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  distenceMin: 0
-  speed: 0
+  distenceMin: 8
+  speed: 1
   bulletPrefb: {fileID: 4716579287150367575, guid: e15fe2e79b00c544fbc8a4a1dc9e85aa, type: 3}
-  shootCD: 0
-  bulletSpeed: 0
+  shootCD: 0.8
+  bulletSpeed: 0.15

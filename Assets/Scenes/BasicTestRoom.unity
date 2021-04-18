@@ -747,5 +747,9 @@ PrefabInstance:
       propertyPath: shootCD
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6934718060517066926, guid: 34d84204843d60645bfcecc2466b917a, type: 3}
+      propertyPath: bulletSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34d84204843d60645bfcecc2466b917a, type: 3}

@@ -58,7 +58,7 @@ public class Drone : Enemy
         if (time > shootCD)
         {
             GameObject bullet = Instantiate(bulletPrefb);
-            bullet.transform.position = transform.position;
+            bullet.transform.position = gameObject.GetComponentInParent<Transform>().position;
             BulletBasic bulletf = bullet.GetComponentInChildren<BulletBasic>();
             bulletf.SetTarget(player);
             bulletf.SetSpeed(bulletSpeed);
