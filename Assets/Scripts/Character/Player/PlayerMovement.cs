@@ -18,10 +18,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ò»°ã")]
     public float speed, jumpSpeed;
 
+    [Header("Õ½¶·")]
+    public float attackCD;
+
     private bool isJump, resetJumpFlag, resetJumpTimeFlag;
     private Animator animator;
     private Rigidbody rigidbd;
     private float horizontalMove, verticalMove;
+    private float attackCDTimer;
     
     // Start is called before the first frame update
     void Start()
@@ -40,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         verticalMove = Input.GetAxis("Vertical");
         Jump();
         ResetJump();
+        MeleeAttack();
     }
     private void FixedUpdate()
     {
@@ -153,6 +158,23 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("false");
             resetJumpFlag = false;
             canJump = true;
+        }
+    }
+
+    private void MeleeAttack()
+    {
+        if (attackCDTimer < attackCD)
+        {
+            attackCDTimer += Time.deltaTime;
+            animator.SetBool("IsAttack", false);
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                animator.SetBool("IsAttack", true);
+                attackCDTimer = 0;
+            }
         }
     }
 }

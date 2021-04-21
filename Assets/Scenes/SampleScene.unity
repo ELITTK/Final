@@ -1933,6 +1933,50 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &268883782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 268883783}
+  - component: {fileID: 268883784}
+  m_Layer: 0
+  m_Name: AttackJudge
+  m_TagString: PlayerAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &268883783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268883782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.706, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1896019089}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &268883784
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268883782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8751986, y: 1.6439606, z: 1}
+  m_Center: {x: -0.49338615, y: 0.24262995, z: 0}
 --- !u!1001 &291169623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3422,7 +3466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4692062974380522, guid: 695aa4942897a40e6a9b55f63cfbce2a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -212.81
+      value: -247.14
       objectReference: {fileID: 0}
     - target: {fileID: 4692062974380522, guid: 695aa4942897a40e6a9b55f63cfbce2a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11883,6 +11927,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2091776053}
+  - {fileID: 268883783}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11928,6 +11973,7 @@ MonoBehaviour:
   jumpForceMin: 4
   speed: 3
   jumpSpeed: 0
+  attackCD: 1
 --- !u!114 &1896019092
 MonoBehaviour:
   m_ObjectHideFlags: 0
