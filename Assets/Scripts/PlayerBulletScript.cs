@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class PlayerBulletScript : MonoBehaviour
 {
     public float bulletDmg;
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag!="Player")
+        if (!collision.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
+
+
         }
     }
 }
