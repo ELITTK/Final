@@ -49,7 +49,7 @@ public class PlayerBulletScript : MonoBehaviour
     private void OnParticleSystemStopped()
     {
         //当该物体已经没有存活的粒子时，隐藏物体以便让对象池再次调用
-
+        //Debug:粒子在屏幕外不更新不渲染不触发这个函数，据说是元老级bug，要勾上粒子系统的submitter才能解决
         UnHideBullet();//解除子弹球体的隐藏
         gameObject.SetActive(false);
     }
