@@ -8,7 +8,7 @@ public class BulletScript : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Player")
+        if (collision.gameObject.tag!="Player")
         {
             gameObject.SetActive(false);
         }
