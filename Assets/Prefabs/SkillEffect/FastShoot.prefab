@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2267708942497747756}
   - component: {fileID: 784169188645113754}
   - component: {fileID: 4032522548232197957}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Small Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -3802,7 +3802,7 @@ ParticleSystem:
     primitives: []
   SubModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 0}
@@ -4821,9 +4821,9 @@ GameObject:
   - component: {fileID: 8212397662635717533}
   - component: {fileID: 7151202838241288385}
   - component: {fileID: -8254761098345002267}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FastShoot
-  m_TagString: Untagged
+  m_TagString: BulletPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4922,7 +4922,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &8881740888878577515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4950,7 +4950,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -9744,7 +9744,7 @@ GameObject:
   - component: {fileID: 6114279076798797224}
   - component: {fileID: 5700823742310808050}
   - component: {fileID: 4725331848428917384}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BigLocal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13535,7 +13535,7 @@ ParticleSystem:
     primitives: []
   SubModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 0}
@@ -14548,7 +14548,7 @@ GameObject:
   - component: {fileID: 2668029346658965707}
   - component: {fileID: 2927851480663541909}
   - component: {fileID: 4071661827906078505}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Small Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
