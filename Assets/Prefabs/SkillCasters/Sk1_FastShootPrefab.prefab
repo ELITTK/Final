@@ -4785,7 +4785,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: f391a2c220fb454408f7d39f0bd894eb, type: 2}
   firePoint: {fileID: 6645323020837938643}
   bulletPrefab: {fileID: 4829966847286675071, guid: 1bce4a33164ad7140b75e12d7b9c1d4c, type: 3}
-  bulletDmg: 10
+  bulletDmg: 30
   bulletForce: 35
   poolList: []
 --- !u!198 &9046982746607648056

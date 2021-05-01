@@ -26,6 +26,11 @@ public class PlayerBulletScript : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player"))
         {
             StopAllParticleSystem();
+            Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
+            if (enemyScript)
+            {
+                enemyScript.takeDmg(bulletDmg);
+            }
         }
     }
 
@@ -60,10 +65,18 @@ public class PlayerBulletScript : MonoBehaviour
         isHidden = true;
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+        if (GetComponent<Collider>())
+        {
+            GetComponent<Collider>().enabled = false;
+        }
     }
     private void UnHideBullet()
     {
         isHidden = false;
         GetComponent<MeshRenderer>().enabled = true;
+        if (GetComponent<Collider>())
+        {
+            GetComponent<Collider>().enabled = true;
+        }
     }
 }

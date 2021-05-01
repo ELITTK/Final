@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health;
+    public float health;
 
     protected Animator animator;
     protected float MaxHealth;
@@ -13,5 +13,28 @@ public class Enemy : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         MaxHealth = health;
+    }
+
+    public virtual void takeDmg(float dmg)
+    {
+        if (health>0)
+        {
+            health -= dmg;
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+    }
+
+    protected virtual void Die()
+    {
+        //Anim
+        DestroyGo();
+    }
+
+    protected virtual void DestroyGo()
+    {
+        Destroy(gameObject);
     }
 }
