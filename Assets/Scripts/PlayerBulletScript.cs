@@ -31,6 +31,7 @@ public class PlayerBulletScript : MonoBehaviour
 
     private void StopAllParticleSystem()
     {
+        CancelInvoke();
         if (!isHidden)
         {
             //隐藏子弹球体
