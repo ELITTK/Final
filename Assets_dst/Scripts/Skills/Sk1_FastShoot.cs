@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class Sk1_FastShoot : BaseShoot
 {
-    private Transform cameraTransform;
-
-    public void Awake()
-    {
-        cameraTransform = GameObject.Find("Main Camera").transform;
-    }
-
-    public void Start()
-    {
-        Shoot();
-    }
 
 
     //覆盖，返回射击方向
