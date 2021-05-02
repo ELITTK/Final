@@ -82,7 +82,7 @@ public class BaseShoot : BaseSkillCaster
 
     protected virtual void Shoot_SetBulletInfo(GameObject bullet) //设置子弹信息 在子类里覆盖
     {
-        PlayerBulletScript bulletScript = bullet.GetComponent<PlayerBulletScript>();
+        BulletScript bulletScript = bullet.GetComponent<BulletScript>();
         float weaponNowDmg = bulletDmg;
         bulletScript.bulletDmg = (int)(weaponNowDmg * Random.Range(0.9f, 1.1f));
     }
