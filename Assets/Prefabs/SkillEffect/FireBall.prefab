@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 865203514551966224}
   - component: {fileID: 2313217092304929749}
   - component: {fileID: 7304727290079665131}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FireBall
-  m_TagString: BulletPlayer
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +119,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 48
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &2339502625441573850
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4929,7 +4929,7 @@ GameObject:
   - component: {fileID: 7627222083404389259}
   - component: {fileID: 722690549707563048}
   - component: {fileID: 8832496510702240029}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: MainFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8660,7 +8660,7 @@ ParticleSystem:
     - {fileID: 0}
   SubModule:
     serializedVersion: 2
-    enabled: 1
+    enabled: 0
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 0}
@@ -9673,7 +9673,7 @@ GameObject:
   - component: {fileID: 2567606058724007082}
   - component: {fileID: 1783446375393523118}
   - component: {fileID: 3243898763082398330}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: LittleFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13404,7 +13404,7 @@ ParticleSystem:
     - {fileID: 0}
   SubModule:
     serializedVersion: 2
-    enabled: 1
+    enabled: 0
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 0}
@@ -14417,7 +14417,7 @@ GameObject:
   - component: {fileID: 2485023029390685245}
   - component: {fileID: 6225228768441713190}
   - component: {fileID: 5341988628944422399}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Dot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18103,7 +18103,7 @@ ParticleSystem:
     - {fileID: 0}
   SubModule:
     serializedVersion: 2
-    enabled: 1
+    enabled: 0
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 0}
@@ -19115,7 +19115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2368519468057584936}
   - component: {fileID: 2609224256591209640}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
