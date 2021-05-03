@@ -10,6 +10,7 @@ public class Drone : Enemy
 
     [Header("射击")]
     public float shootCD, bulletSpeed;
+    public Transform ShootPoint;//子弹生成位置
 
     private Rigidbody rigidbd;
     private Transform player;
@@ -58,7 +59,8 @@ public class Drone : Enemy
         if (time > shootCD)
         {
             GameObject bullet = Instantiate(bulletPrefb);
-            bullet.transform.position = gameObject.GetComponentInParent<Transform>().position;
+            //bullet.transform.position = gameObject.GetComponentInParent<Transform>().position;
+            bullet.transform.position = ShootPoint.position;
             BulletBasic bulletf = bullet.GetComponentInChildren<BulletBasic>();
             bulletf.SetTarget(player);
             bulletf.SetSpeed(bulletSpeed);

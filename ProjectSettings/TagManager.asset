@@ -8,6 +8,7 @@ TagManager:
   - BulletEndPoint
   - Enemy
   - Environment
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX

@@ -22,9 +22,9 @@ public class Mouse3D : MonoBehaviour
     {
         Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         Vector3 mousePos = Input.mousePosition;//鼠标位置
-        //转世界坐标,有个坑是z坐标不能为0，尝试后貌似等于6时比较准确
+        //转世界坐标,有个坑是z坐标不能为0，尝试后貌似等于8时比较准确
         //float newZ = Mathf.Abs(camera.transform.position.z);
-        float newZ = 6f;
+        float newZ = 8f;
         mousePos = camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, newZ));
         //设置z前，mousePos还是鼠标直接所指位置
         mousePos.z = -2.5f;
