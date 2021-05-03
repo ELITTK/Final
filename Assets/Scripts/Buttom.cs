@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Buttom : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int isAttacked = 0;
+    private GameObject[] buttoms;
+
+    void start()
     {
-        
+        buttoms = GameObject.FindGameObjectsWithTag("buttom");
     }
 
-    // Update is called once per frame
-    void Update()
+    void onCollisionEnter(Collision coll)
     {
-        
+        if(coll.gameObject.tag == "BulletPlayer")
+        {
+            isAttacked += 1;
+        }
+        if(isAttacked>=3)
+        {
+            foreach(GameObject sum in buttoms)
+            {
+                DestroyImmediate(sum);
+            }
+            
+        }
     }
 }
