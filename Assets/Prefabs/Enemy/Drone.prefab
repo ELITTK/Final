@@ -117,7 +117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3725690972003262932}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -3, y: 0.5, z: -3.5}
+  m_LocalPosition: {x: -3, y: 0.5, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3499214091637951030}
@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 1754323515965518716}
   - component: {fileID: 2989582906770200552}
   - component: {fileID: 6934718060517066926}
-  - component: {fileID: 7024464378012910970}
   m_Layer: 0
   m_Name: default
   m_TagString: Enemy
@@ -228,19 +227,6 @@ MonoBehaviour:
   shootCD: 0.8
   bulletSpeed: 0.15
   ShootPoint: {fileID: 5437893972829462437}
---- !u!65 &7024464378012910970
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5636707740660341005}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.6000003, y: 0.5999999, z: 1.2000002}
-  m_Center: {x: -2.0000005, y: 3, z: -2.0000005}
 --- !u!1 &7544512358484502472
 GameObject:
   m_ObjectHideFlags: 0

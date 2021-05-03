@@ -58,7 +58,7 @@ public class BulletBasic : Bullet
         endPoint.transform.position = tar.transform.position;
     }
 
-    public void SetSpeed(float sp = 0.15f)
+    public void SetSpeed(float sp)
     {
        speed = sp;
     }

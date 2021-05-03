@@ -7,7 +7,7 @@ public class BaseShoot : BaseSkillCaster
     [Header("射击")]
     public Transform firePoint;//开火点
     public GameObject bulletPrefab;//射出子弹类型
-    public float bulletDmg = 10;//子弹伤害
+    public float bulletDmg = 30;//子弹伤害
     public float bulletForce = 20.0f;//子弹初速度
 
     [HideInInspector]
@@ -82,11 +82,9 @@ public class BaseShoot : BaseSkillCaster
 
     protected virtual void Shoot_SetBulletInfo(GameObject bullet) //设置子弹信息 在子类里覆盖
     {
-        /*
         BulletScript bulletScript = bullet.GetComponent<BulletScript>();
         float weaponNowDmg = bulletDmg;
-        bulletScript.dmg = (int)(weaponNowDmg * Random.Range(0.9f, 1.1f));
-        bulletScript.isPlayer = false;*/
+        bulletScript.bulletDmg = (int)(weaponNowDmg * Random.Range(0.9f, 1.1f));
     }
     protected virtual void Shoot_ShootOver()//射击结束的事件，在子类里覆盖
     {

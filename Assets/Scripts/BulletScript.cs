@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBulletScript : MonoBehaviour
+public class BulletScript : MonoBehaviour
 {
     public float bulletDmg;
 
@@ -26,11 +26,17 @@ public class PlayerBulletScript : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player"))
         {
             StopAllParticleSystem();
+            Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
+            if (enemyScript)
+            {
+                enemyScript.takeDmg(bulletDmg);
+            }
         }
     }
 
     private void StopAllParticleSystem()
     {
+        CancelInvoke();
         if (!isHidden)
         {
             //隐藏子弹球体
@@ -59,10 +65,18 @@ public class PlayerBulletScript : MonoBehaviour
         isHidden = true;
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+        if (GetComponent<Collider>())
+        {
+            GetComponent<Collider>().enabled = false;
+        }
     }
     private void UnHideBullet()
     {
         isHidden = false;
         GetComponent<MeshRenderer>().enabled = true;
+        if (GetComponent<Collider>())
+        {
+            GetComponent<Collider>().enabled = true;
+        }
     }
 }

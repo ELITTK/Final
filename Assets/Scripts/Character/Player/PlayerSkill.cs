@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSkill : MonoBehaviour
 {
-    public List<GameObject> skillCasters;
+    public List<SkillData> skills;
 
     public List<float> skillCurrentCD;
 
@@ -12,7 +12,7 @@ public class PlayerSkill : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < skillCasters.Count; i++)
+        for (int i = 0; i < skills.Count; i++)
         {
             if (Input.GetKey(skillKeyCode[i]))
             {
@@ -27,9 +27,8 @@ public class PlayerSkill : MonoBehaviour
     {
         if (skillCurrentCD[i] <= 0)
         {
-            BaseSkillCaster casterScript = skillCasters[i].GetComponent<BaseSkillCaster>();
-            casterScript.ExcuteSkill();
-            skillCurrentCD[i] = casterScript.skillData.maxCd;
+            skills[i].UseSkill(transform);
+            skillCurrentCD[i] = skills[i].maxCd;
         }
     }
 
