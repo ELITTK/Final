@@ -4,19 +4,6 @@ using UnityEngine;
 
 public class Sk0_FireBall : BaseShoot
 {
-    private Transform cameraTransform;
-
-    public void Awake()
-    {
-        cameraTransform = GameObject.Find("Main Camera").transform;
-    }
-
-    public void Start()
-    {
-        Shoot();
-    }
-
-
     //覆盖，返回射击方向
     protected override Vector3 Shoot_GetShootDir()
     {
