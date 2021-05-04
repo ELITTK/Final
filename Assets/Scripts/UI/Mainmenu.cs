@@ -10,4 +10,9 @@ public class Mainmenu : MonoBehaviour
     {
        
     }
+
+    public void Quit()
+    {
+
+    }
 }
