@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSkill : MonoBehaviour
 {
-    public List<SkillData> skills;
+    public List<BaseSkillCaster> skills;
 
     public List<float> skillCurrentCD;
 
@@ -27,8 +27,8 @@ public class PlayerSkill : MonoBehaviour
     {
         if (skillCurrentCD[i] <= 0)
         {
-            skills[i].UseSkill(transform);
-            skillCurrentCD[i] = skills[i].maxCd;
+            skills[i].ExcuteSkill();
+            skillCurrentCD[i] = skills[i].skillData.maxCd;
         }
     }
 
