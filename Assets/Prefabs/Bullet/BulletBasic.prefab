@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3444802925781714682}
   - component: {fileID: 9154087685790943880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: End
   m_TagString: BulletEndPoint
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4482360836528010895}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8685229431724456162}
   - component: {fileID: 553278625835681696}
   - component: {fileID: 7607310733635737557}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet_Basic
   m_TagString: BulletEnemy
   m_Icon: {fileID: 0}
@@ -180,12 +180,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3245073694133286153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0fc35da16bedd54a904f0fd72839797, type: 3}
+  m_Script: {fileID: 11500000, guid: be7dac73fccf2e2479d65283256389dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  speed: 0.2
-  timeLimit: 0.1
+  speed: 2
+  timeLimit: 0
   startPoint: {fileID: 3125532006481154154}
   endPoint: {fileID: 243769659428168752}
 --- !u!54 &7607310733635737557
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8948349229687299552}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletBasic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
