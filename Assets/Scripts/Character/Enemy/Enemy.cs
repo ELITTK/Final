@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float health;
+    public int chargeAmountMin, chargeAmountMax;
 
     protected Animator animator;
     protected float MaxHealth;
@@ -30,6 +31,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public virtual int GetCharge()
+    {
+        return Random.Range(chargeAmountMin, chargeAmountMax);
+    }
+
     protected virtual void Die()
     {
         if (animator)
@@ -45,6 +51,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void DestroyGo()
     {
+        EventCenter.GetInstance().EventTrigger<int>("能量获取", GetCharge());
         Debug.Log("啊这");
         Destroy(gameObject);
     }
