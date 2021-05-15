@@ -20,21 +20,25 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("战斗")]
     public float attackCD;
+    public int energeMax, healMax;
 
     private bool isJump, resetJumpFlag, resetJumpTimeFlag;
     private Animator animator;
     private Rigidbody rigidbd;
     private float horizontalMove, verticalMove;
     private float attackCDTimer;
+    private int health, energe;
     
     // Start is called before the first frame update
     void Start()
     {
         InputMgr.GetInstance().StartOrEndCheck(true);
         EventCenter.GetInstance().AddEventListener<KeyCode>("某键按下", JudgementCenter);
+        EventCenter.GetInstance().AddEventListener<int>("能量获取", EnergeCharge);
         //EventCenter.GetInstance().AddEventListener("地面检测", ResetJump);
         animator = GetComponent<Animator>();
         rigidbd = GetComponent<Rigidbody>();
+        energe = 0;
     }
 
     // Update is called once per frame
@@ -175,6 +179,18 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsAttack", true);
                 attackCDTimer = 0;
             }
+        }
+    }
+
+    private void EnergeCharge(int energeNum)
+    {
+        if (energe + energeNum > energeMax)
+        {
+            energe = energeMax;
+        }
+        else
+        {
+            energe += energeNum;
         }
     }
 }
