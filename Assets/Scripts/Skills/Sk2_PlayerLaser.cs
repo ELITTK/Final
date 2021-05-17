@@ -8,6 +8,14 @@ public class Sk2_PlayerLaser : MonoBehaviour
     public LineRenderer laser;
     private bool isShooting = false;
 
+    public GameObject hitEffect;
+    private ParticleSystem[] Effects;
+
+    private void Start()
+    {
+        Effects = GetComponentsInChildren<ParticleSystem>();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(ExecuteKey))
@@ -47,11 +55,29 @@ public class Sk2_PlayerLaser : MonoBehaviour
         {
             laser.SetPosition(1, transform.position + dir * 50);
         }
+
+        //hitEffect
+        hitEffect.transform.position = hit.point;
+        hitEffect.transform.rotation = Quaternion.identity;
+        if (isHit)
+        {
+            foreach (var AllPs in Effects)
+            {
+                if (!AllPs.isPlaying) AllPs.Play();
+            }
+        }
     }
 
     private void CloseLaser()
     {
         laser.enabled = false;
+
+        //effect
+        ParticleSystem[] Hit = hitEffect.GetComponentsInChildren<ParticleSystem>();
+        foreach (var AllPs in Hit)
+        {
+            if (AllPs.isPlaying) AllPs.Stop();
+        }
     }
 
     //¸²¸Ç£¬·µ»ØÉä»÷·½Ïò
