@@ -50,6 +50,7 @@ public class Sk2_PlayerLaser : MonoBehaviour
         if (isHit)
         {
             laser.SetPosition(1, hit.point);
+            Debug.Log("玩家射线命中：" + hit.collider.gameObject.name);
         }
         else
         {
@@ -65,6 +66,14 @@ public class Sk2_PlayerLaser : MonoBehaviour
             {
                 if (!AllPs.isPlaying) AllPs.Play();
             }
+        }
+
+        //伤害
+        Enemy enemyScript = hit.collider.gameObject.GetComponentInParent<Enemy>();
+        if (enemyScript)
+        {
+            Debug.Log("啊这shanghai");
+            enemyScript.takeDmg(1);
         }
     }
 
