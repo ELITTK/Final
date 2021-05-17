@@ -4977,7 +4977,7 @@ Transform:
   m_GameObject: {fileID: 5150263508424058382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2, y: 3, z: -2}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 5146823907000435022}
   - {fileID: 5146774179038216630}
@@ -19692,6 +19692,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  chargeAmountMin: 0
+  chargeAmountMax: 0
   distenceMin: 8
   speed: 1
   bulletPrefb: {fileID: 4716579287150367575, guid: e15fe2e79b00c544fbc8a4a1dc9e85aa, type: 3}

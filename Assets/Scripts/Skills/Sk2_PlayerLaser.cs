@@ -11,6 +11,8 @@ public class Sk2_PlayerLaser : MonoBehaviour
     public GameObject hitEffect;
     private ParticleSystem[] Effects;
 
+    public float DmgPerSecond = 30;
+
     private void Start()
     {
         Effects = GetComponentsInChildren<ParticleSystem>();
@@ -50,7 +52,7 @@ public class Sk2_PlayerLaser : MonoBehaviour
         if (isHit)
         {
             laser.SetPosition(1, hit.point);
-            Debug.Log("玩家射线命中：" + hit.collider.gameObject.name);
+            //Debug.Log("玩家射线命中：" + hit.collider.gameObject.name);
         }
         else
         {
@@ -72,8 +74,9 @@ public class Sk2_PlayerLaser : MonoBehaviour
         Enemy enemyScript = hit.collider.gameObject.GetComponentInParent<Enemy>();
         if (enemyScript)
         {
-            Debug.Log("啊这shanghai");
-            enemyScript.takeDmg(1);
+            float dmg = DmgPerSecond * Time.deltaTime;
+            Debug.Log("射线每帧伤害：" + dmg);
+            enemyScript.takeDmg(dmg);
         }
     }
 
