@@ -6,15 +6,15 @@ public class VisionDetect : MonoBehaviour
 {
     private bool isFound = false;
     private Transform tempTransform;
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             isFound = true;
-            tempTransform = collision.transform;
+            tempTransform = other.transform;
         }
     }
-
     public Transform getDetected()
     {
         return tempTransform;
