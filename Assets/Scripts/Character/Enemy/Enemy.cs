@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     protected Animator animator;
     protected float MaxHealth;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -21,10 +22,12 @@ public class Enemy : MonoBehaviour
         if (health>0)
         {
             health -= dmg;
-            if (health <= 0)
-            {
-                Die();
-            }
+
+        }
+
+        if (health <= 0)
+        {
+            Die();
         }
     }
 
@@ -35,13 +38,21 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
-        //Anim
-        DestroyGo();
+        if (animator)
+        {
+            //Anim
+            animator.SetBool("IsDead", true);
+        }
+        else
+        {
+            DestroyGo();
+        }
     }
 
-    protected virtual void DestroyGo()
+    public virtual void DestroyGo()
     {
         EventCenter.GetInstance().EventTrigger<int>("能量获取", GetCharge());
+        Debug.Log("啊这");
         Destroy(gameObject);
     }
 }

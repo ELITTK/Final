@@ -120,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
                     resetJumpTimeFlag = false;
                     holdTime += Time.deltaTime;
                     rigidbd.velocity = new Vector3(rigidbd.velocity.x, jumpForceMin, 0);
+                    EventCenter.GetInstance().EventTrigger("Íæ¼ÒÌøÔ¾");
                 }
                 else if (!resetJumpTimeFlag)
                 {

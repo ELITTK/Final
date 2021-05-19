@@ -15,6 +15,16 @@ public class VisionDetect : MonoBehaviour
             tempTransform = other.transform;
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isFound = false;
+            tempTransform = null;
+        }
+    }
+
     public Transform getDetected()
     {
         return tempTransform;

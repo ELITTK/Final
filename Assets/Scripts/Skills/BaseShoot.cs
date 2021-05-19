@@ -30,8 +30,8 @@ public class BaseShoot : BaseSkillCaster
 
         //生成子弹
         GameObject bullet = PopPool();
-        bullet.SetActive(true);
         bullet.transform.position = firePoint.position;
+        bullet.SetActive(true);
 
         /*
         if (shootDir.x < 0)//子弹左右方向
