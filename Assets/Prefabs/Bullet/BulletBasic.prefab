@@ -5020,7 +5020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   speed: 2
-  timeLimit: 0
+  timeLimit: 0.5
   startPoint: {fileID: 3125532006481154154}
   endPoint: {fileID: 243769659428168752}
 --- !u!54 &7607310733635737557
