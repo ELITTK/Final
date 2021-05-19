@@ -181,7 +181,7 @@ MonoBehaviour:
     overrideState: 1
     value: 0
   intensity:
-    overrideState: 0
+    overrideState: 1
     value: 0
   intensityX:
     overrideState: 0
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   shutterAngle:
     overrideState: 1
     value: 58

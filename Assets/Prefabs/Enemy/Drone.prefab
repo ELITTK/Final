@@ -19691,9 +19691,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182d6d24773d2aa4e95ff9870441b864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  chargeAmountMin: 0
-  chargeAmountMax: 0
+  health: 5
+  chargeAmountMin: 10
+  chargeAmountMax: 15
   distenceMin: 8
   speed: 1
   bulletPrefb: {fileID: 4716579287150367575, guid: e15fe2e79b00c544fbc8a4a1dc9e85aa, type: 3}
