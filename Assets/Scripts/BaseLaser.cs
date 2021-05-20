@@ -73,6 +73,12 @@ public class BaseLaser : MonoBehaviour
         {
             DisableEffect();
         }
+        //hitEffectLight
+        Light light = GetComponentInChildren<Light>();
+        if (light)
+        {
+            light.enabled = true;
+        }
 
         //…À∫¶
         DealDmg(hit);
@@ -131,6 +137,13 @@ public class BaseLaser : MonoBehaviour
         foreach (var AllPs in Hit)
         {
             if (AllPs.isPlaying) AllPs.Stop();
+        }
+
+        //hitEffectLight
+        Light light = GetComponentInChildren<Light>();
+        if (light)
+        {
+            light.enabled = false;
         }
     }
 
