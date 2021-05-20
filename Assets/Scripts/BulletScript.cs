@@ -50,6 +50,11 @@ public class BulletScript : MonoBehaviour
             {
                 Ready2DisableBullet();
                 //对玩家造成伤害
+                PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
+                if (playerMovement)
+                {
+                    playerMovement.TakeDmg(bulletDmg);
+                }
             }
         }
     }
