@@ -30,7 +30,6 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("azhe" + collision.gameObject.name);
         if (isPlayerBullet)
         {
             //碰撞事件
@@ -58,6 +57,7 @@ public class BulletScript : MonoBehaviour
     //准备禁用子弹
     private void Ready2DisableBullet()
     {
+        CancelInvoke();
         if (!isPlayHitPS)
         {
             StopAllParticleSystem();
@@ -72,7 +72,6 @@ public class BulletScript : MonoBehaviour
     //关闭粒子系统，为禁用子弹做准备
     private void StopAllParticleSystem()
     {
-        CancelInvoke();
         if (!isHidden)
         {
             //隐藏子弹球体
@@ -104,7 +103,15 @@ public class BulletScript : MonoBehaviour
             psNeed2Open.SetActive(false);
         }
 
-        gameObject.SetActive(false);
+        
+        if (gameObject.transform.parent)
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void HideBullet()
@@ -119,7 +126,7 @@ public class BulletScript : MonoBehaviour
             GetComponent<Collider>().enabled = false;
         }
         GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-        GetComponent<Rigidbody>().useGravity = false;
+        //GetComponent<Rigidbody>().useGravity = false;
     }
     private void UnHideBullet()
     {
@@ -132,6 +139,6 @@ public class BulletScript : MonoBehaviour
         {
             GetComponent<Collider>().enabled = true;
         }
-        GetComponent<Rigidbody>().useGravity = true;
+        //GetComponent<Rigidbody>().useGravity = true;
     }
 }

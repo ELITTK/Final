@@ -19696,10 +19696,10 @@ MonoBehaviour:
   chargeAmountMax: 15
   distenceMin: 8
   speed: 1
-  bulletPrefb: {fileID: 4716579287150367575, guid: e15fe2e79b00c544fbc8a4a1dc9e85aa, type: 3}
   shootCD: 0.8
   bulletSpeed: 0.15
   ShootPoint: {fileID: 5437893972829462437}
+  bulletPrefab: {fileID: 4716579287150367575, guid: e15fe2e79b00c544fbc8a4a1dc9e85aa, type: 3}
 --- !u!65 &541467761636547869
 BoxCollider:
   m_ObjectHideFlags: 0
