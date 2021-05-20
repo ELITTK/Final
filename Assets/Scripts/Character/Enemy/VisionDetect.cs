@@ -21,7 +21,7 @@ public class VisionDetect : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isFound = false;
-            tempTransform = null;
+            //tempTransform = null;
         }
     }
 

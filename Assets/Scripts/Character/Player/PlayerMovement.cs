@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public float healthMax;
 
     private bool isJump, resetJumpFlag, resetJumpTimeFlag;
+    private Transform RespawnLocal;
     private Animator animator;
     private Rigidbody rigidbd;
     private float horizontalMove, verticalMove;
@@ -37,9 +38,11 @@ public class PlayerMovement : MonoBehaviour
         InputMgr.GetInstance().StartOrEndCheck(true);
         EventCenter.GetInstance().AddEventListener<KeyCode>("某键按下", JudgementCenter);
         EventCenter.GetInstance().AddEventListener<int>("能量获取", EnergeCharge);
+        EventCenter.GetInstance().AddEventListener("死亡", Death);
         //EventCenter.GetInstance().AddEventListener("地面检测", ResetJump);
         animator = GetComponent<Animator>();
         rigidbd = GetComponent<Rigidbody>();
+        RespawnLocal.position = transform.position;
         energe = 0;
         health = healthMax;
     }
@@ -165,6 +168,10 @@ public class PlayerMovement : MonoBehaviour
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             EventCenter.GetInstance().EventTrigger<int>("伤害", bullet.damage);
         }
+        else if (other.gameObject.CompareTag("RespawnPoint"))
+        {
+            RespawnLocal.position = transform.position;
+        }
     }
 
     private void ResetJump()
@@ -217,5 +224,10 @@ public class PlayerMovement : MonoBehaviour
         //为了演示所以没做死亡
         EventCenter.GetInstance().EventTrigger("玩家受到伤害");
         Debug.Log("玩家血量：" + health);
+    }
+    private void Death()
+    {
+        transform.position = RespawnLocal.position;
+
     }
 }
