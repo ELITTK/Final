@@ -11,6 +11,7 @@ TagManager:
   - PlayerAttack
   - BulletPlayer
   - Buttom
+  - RespawnPoint
   layers:
   - Default
   - TransparentFX
