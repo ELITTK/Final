@@ -75,6 +75,14 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+        if (Mathf.Abs(horizontalMove) > 0.1f)
+        {
+            animator.SetBool("IsMove", true);
+        }
+        else
+        {
+            animator.SetBool("IsMove", false);
+        }
     }
 
     private IEnumerator DelayTime(float time)
