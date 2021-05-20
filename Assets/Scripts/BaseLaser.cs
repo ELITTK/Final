@@ -49,7 +49,6 @@ public class BaseLaser : MonoBehaviour
         //LineRenderer
         laser.enabled = true;
         laser.SetPosition(0, laserStartPoint);
-        Debug.Log(transform.name + "£º"+ transform.position);
         if (isHit)
         {
             laser.SetPosition(1, hit.point);

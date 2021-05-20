@@ -39590,7 +39590,7 @@ MonoBehaviour:
   jumpSpeed: 0
   attackCD: 0
   energeMax: 0
-  healMax: 0
+  healthMax: 300
 --- !u!114 &1896019092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44979,9 +44979,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052e2b2df6fda8e4e812b18e68a003c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExecuteKey: 102
   laser: {fileID: 1136104997}
   hitEffect: {fileID: 1930521539}
+  DmgPerSecond: 30
+  ExecuteKey: 102
 --- !u!1 &1990383204
 GameObject:
   m_ObjectHideFlags: 0
