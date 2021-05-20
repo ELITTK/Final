@@ -113,6 +113,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 dashTimeLeft -= Time.deltaTime;
                 rigidbd.velocity = new Vector3(horizontalMove * dashSpeed, verticalMove * dashSpeed, 0);
+                EventCenter.GetInstance().EventTrigger<int>("Íæ¼Ò³å´Ì",(int)transform.localScale.x);
+            }
+            else
+            {
+                EventCenter.GetInstance().EventTrigger("Íæ¼Ò³å´Ì½áÊø");
             }
         }
     }
