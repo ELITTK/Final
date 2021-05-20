@@ -807,8 +807,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
-  - {fileID: 11400000, guid: f391a2c220fb454408f7d39f0bd894eb, type: 2}
-  - {fileID: 11400000, guid: dedf2cf0debd95f42851a3ce75b93941, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   skillCurrentCD:
   - 0
   - 0
@@ -1454,7 +1454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3725690972003262932, guid: 34d84204843d60645bfcecc2466b917a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4107142807914953582, guid: 34d84204843d60645bfcecc2466b917a, type: 3}
       propertyPath: m_RootOrder
@@ -1462,11 +1462,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4107142807914953582, guid: 34d84204843d60645bfcecc2466b917a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.13
+      value: 6.16
       objectReference: {fileID: 0}
     - target: {fileID: 4107142807914953582, guid: 34d84204843d60645bfcecc2466b917a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.99
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 4107142807914953582, guid: 34d84204843d60645bfcecc2466b917a, type: 3}
       propertyPath: m_LocalPosition.z
