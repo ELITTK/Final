@@ -37,6 +37,8 @@ public class BulletBasic : Bullet
         direction = direction.normalized;
     }
 
+    //用另一个脚本BulletScript控制子弹击中
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BulletEndPoint"))
@@ -50,8 +52,8 @@ public class BulletBasic : Bullet
         {
             Destroy(gameObject);
         }
-        
     }
+    */
 
     public void SetTarget(Transform tar)
     {
