@@ -9,6 +9,7 @@ public class States : MonoBehaviour
     public int MaxHealth = 100, MaxShield = 100, shieldFade = 1;
     public float fadeTime = 1f;
 
+    private GameObject Player;
     private int health, previousHealth, shield;
     private float healthTimer;
     private bool isShieldFade = true;
@@ -18,6 +19,7 @@ public class States : MonoBehaviour
         health = MaxHealth;
         previousHealth = health;
         HealLost(0);
+        Player = GameObject.FindGameObjectWithTag("Player");
         EventCenter.GetInstance().AddEventListener<int>("伤害", HealLost);
         EventCenter.GetInstance().AddEventListener<int>("护盾消耗", ShieldJudge);
         EventCenter.GetInstance().AddEventListener<int>("护盾获得", ShieldAdd);

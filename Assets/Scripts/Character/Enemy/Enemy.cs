@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
     public virtual void DestroyGo()
     {
         EventCenter.GetInstance().EventTrigger<int>("能量获取", GetCharge());
-        Debug.Log("啊这");
+        //Debug.Log("啊这");
         Destroy(gameObject);
     }
 }
