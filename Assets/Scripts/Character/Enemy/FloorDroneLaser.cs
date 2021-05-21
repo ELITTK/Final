@@ -4,47 +4,43 @@ using UnityEngine;
 
 public class FloorDroneLaser : BaseLaser
 {
-    //private FloorDrone floorDrone;
-    public FloorDrone floorDrone;
+    public FloorDroneAtkRange atkRange;
     public Transform[] laserStartPoints;
     private int randomInt = 0;
 
     protected override void Start()
     {
         base.Start();
-
-        //floorDrone = GetComponentInParent<FloorDrone>();
     }
 
     protected override Vector3 Shoot_GetShootDir()
     {
-        //return new Vector3(transform.localScale.x, 0, 0);
-        Vector3 dir = floorDrone.vision.getDetected().position- laserStartPoints[randomInt].position;
+        Vector3 dir = atkRange.getDetected().position - laserStartPoints[randomInt].position;
         return dir;
     }
 
     protected override void DealDmg(RaycastHit hit)
     {
-        //伤害玩家
+        //对玩家造成伤害
         /*
         PlayerMovement playerMovement = hit.collider.gameObject.GetComponentInParent<PlayerMovement>();
         if (playerMovement)
         {
             float dmg = DmgPerSecond * Time.deltaTime;
             Debug.Log("射线每帧伤害：" + dmg);
-            playerMovement.takeDmg(dmg);
+            playerMovement.TakeDmg(dmg);
         }
         */
     }
 
     protected override bool SetIsShootingTrue()
     {
-        return floorDrone.vision.isFoundTarget();
+        return atkRange.isFoundTarget();
     }
 
     protected override bool SetIsShootingFalse()
     {
-        return ! floorDrone.vision.isFoundTarget();
+        return !atkRange.isFoundTarget();
     }
 
     protected override Vector3 GetLaserStartPoint()

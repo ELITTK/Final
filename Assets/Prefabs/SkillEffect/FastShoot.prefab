@@ -14607,6 +14607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDmg: 0
+  isPlayerBullet: 1
   isPlayHitPS: 1
   psNeed2Open: {fileID: 7115399559992447041}
 --- !u!1 &5394584964852516193
