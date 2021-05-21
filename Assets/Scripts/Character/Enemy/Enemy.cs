@@ -6,13 +6,14 @@ public class Enemy : MonoBehaviour
 {
     public float health;
     public int chargeAmountMin, chargeAmountMax;
-
+    protected BoxCollider box;
     protected Animator animator;
     protected float MaxHealth;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        box = GetComponent<BoxCollider>();
         animator = GetComponent<Animator>();
         MaxHealth = health;
     }

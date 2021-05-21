@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class LaserSystem : MonoBehaviour
 {
     public GameObject Inner, Outer;
     public float startTime, durationTime, fadeTime;
+    public int damage = 10;
 
     private int currentState = 1;
     private float timer;
@@ -65,5 +66,14 @@ public class Laser : MonoBehaviour
     public float GetTime()
     {
         return startTime + durationTime + fadeTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            //Debug.Log("111");
+            other.gameObject.GetComponent<PlayerMovement>().Damage(damage);
+        }
     }
 }

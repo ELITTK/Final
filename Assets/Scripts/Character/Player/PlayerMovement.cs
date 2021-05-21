@@ -13,24 +13,22 @@ public class PlayerMovement : MonoBehaviour
     [Header("跳跃")]
     public bool canJump;
     public float maxHoldTime, jumpForceMin;
-    private float holdTime;
+    private float holdTime, preInputTime = 0.1f;
 
     [Header("一般")]
     public float speed, jumpSpeed;
 
     [Header("战斗")]
     public float attackCD;
-    public int energeMax;
-    public float healthMax;
+    public int energeMax, healMax;
 
-    private bool isJump, resetJumpFlag, resetJumpTimeFlag;
+    private bool isJump, resetJumpFlag, resetJumpTimeFlag, havePressedJump;
     private Transform RespawnLocal;
     private Animator animator;
     private Rigidbody rigidbd;
     private float horizontalMove, verticalMove;
-    private float attackCDTimer;
-    private float health;
-    private int energe;
+    private float attackCDTimer, jumpPressedTimer;
+    private int health, energe;
     
     // Start is called before the first frame update
     void Start()
@@ -44,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
         rigidbd = GetComponent<Rigidbody>();
         RespawnLocal.position = transform.position;
         energe = 0;
-        health = healthMax;
     }
 
     // Update is called once per frame
@@ -148,6 +145,13 @@ public class PlayerMovement : MonoBehaviour
                     //Debug.Log("1");
                 }
             }
+            else if (havePressedJump == true)
+            {
+                havePressedJump = false;
+                rigidbd.velocity = new Vector3(rigidbd.velocity.x, jumpForceMin, 0);
+                resetJumpTimeFlag = true;
+                canJump = false;
+            }
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 if (holdTime < maxHoldTime)
@@ -157,6 +161,21 @@ public class PlayerMovement : MonoBehaviour
                 }
                 holdTime = 0;
                 
+            }
+        }
+        else {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                havePressedJump = true;
+                jumpPressedTimer = preInputTime;
+            }
+        }
+        if (jumpPressedTimer > 0)
+        {
+            jumpPressedTimer -= Time.deltaTime;
+            if (jumpPressedTimer < 0)
+            {
+                havePressedJump = false;
             }
         }
     }
@@ -217,17 +236,18 @@ public class PlayerMovement : MonoBehaviour
             energe += energeNum;
         }
     }
-
-    public void TakeDmg(float dmg)
-    {
-        health -= dmg;
-        //为了演示所以没做死亡
-        EventCenter.GetInstance().EventTrigger("玩家受到伤害");
-        Debug.Log("玩家血量：" + health);
-    }
     private void Death()
     {
         transform.position = RespawnLocal.position;
 
+    }
+    public void Damage(int dmg)
+    {
+        EventCenter.GetInstance().EventTrigger<int>("伤害", dmg);
+    }
+
+    public void RespawnSet()
+    {
+        RespawnLocal.position = transform.position;
     }
 }

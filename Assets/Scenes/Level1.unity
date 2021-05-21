@@ -43485,6 +43485,7 @@ MonoBehaviour:
   MaxShield: 100
   shieldFade: 1
   fadeTime: 1
+  InvincibleTime: 3
 --- !u!1001 &1792314913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44343,7 +44344,7 @@ MonoBehaviour:
   jumpSpeed: 0
   attackCD: 1
   energeMax: 0
-  healthMax: 0
+  healMax: 0
 --- !u!114 &1896019092
 MonoBehaviour:
   m_ObjectHideFlags: 0

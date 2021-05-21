@@ -15,12 +15,6 @@ public class BulletBasic : Bullet
         gameObject.transform.position = startPoint.transform.position;
     }
 
-    private void OnEnable()
-    {
-        //因对象池调用而被重新打开时
-        gameObject.transform.position = startPoint.transform.position;
-    }
-
     // Update is called once per frame
     private void FixedUpdate()
     {
@@ -43,6 +37,20 @@ public class BulletBasic : Bullet
         direction = direction.normalized;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BulletEndPoint"))
+        {
+            Destroy(gameObject);
+        }
+        if (other.CompareTag("Player"))
+        {
+            //Debug.Log("111");
+            other.gameObject.GetComponent<PlayerMovement>().Damage(damage);
+            Destroy(gameObject);
+        }
+    }
+
     public void SetTarget(Transform tar)
     {
         endPoint.transform.position = tar.transform.position;
@@ -52,22 +60,4 @@ public class BulletBasic : Bullet
     {
        speed = sp;
     }
-
-    //用另一个脚本BulletScript控制子弹击中
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("BulletEndPoint"))
-        {
-            Destroy(gameObject);
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
-    */
 }

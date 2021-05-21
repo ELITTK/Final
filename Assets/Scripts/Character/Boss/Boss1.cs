@@ -77,4 +77,5 @@ public class Boss1 : Enemy
             TimeController2 = 0;
         }
     }
+    
 }
