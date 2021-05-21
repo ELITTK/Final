@@ -14,8 +14,9 @@ public class LaserSystem : MonoBehaviour
     private Material innerMat, outerMat;
     private Color innerColor, outerColor;
     private CapsuleCollider capCollider;
-    private void Awake()
+    private void Start()
     {
+        Debug.Log("start");
         innerMesh = Inner.GetComponent<MeshRenderer>();
         outerMesh = Outer.GetComponent<MeshRenderer>();
         innerMat = innerMesh.material;
@@ -26,6 +27,7 @@ public class LaserSystem : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        
         Blink();
     }
 
@@ -35,8 +37,9 @@ public class LaserSystem : MonoBehaviour
         
         if (timer < startTime)
         {
-            float factor = Mathf.Pow(2, timer / startTime);
-            innerMat.SetColor("Color", new Color(innerColor.r * factor, innerColor.g * factor, innerColor.b * factor));
+            float factor = Mathf.Pow(2, timer / startTime) - 1f;
+            
+            innerMat.SetColor("_Color", new Color(innerColor.r * factor, innerColor.g * factor, innerColor.b * factor));
         }
         else if (timer < durationTime + startTime)
         {
@@ -45,7 +48,7 @@ public class LaserSystem : MonoBehaviour
                 capCollider.enabled = true;
                 currentState = 2;
             }
-            innerMat.SetColor("Color", innerColor);
+            innerMat.SetColor("_Color", innerColor);
         }
         else if (timer < fadeTime + durationTime + startTime)
         {
@@ -54,8 +57,9 @@ public class LaserSystem : MonoBehaviour
                 capCollider.enabled = false;
                 currentState = 3;
             }
-            float factor = Mathf.Pow(2, (timer - durationTime - startTime) / fadeTime);
-            innerMat.SetColor("Color", new Color(innerColor.r * factor, innerColor.g * factor, innerColor.b * factor));
+            float factor = Mathf.Pow(2, (timer - durationTime - startTime) / fadeTime) - 1;
+            Debug.Log(factor);
+            innerMat.SetColor("_Color", new Color(innerColor.r * factor, innerColor.g * factor, innerColor.b * factor));
         }
         else
         {

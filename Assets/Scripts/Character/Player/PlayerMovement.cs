@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         //EventCenter.GetInstance().AddEventListener("µÿ√ÊºÏ≤‚", ResetJump);
         animator = GetComponent<Animator>();
         rigidbd = GetComponent<Rigidbody>();
-        RespawnLocal.position = transform.position;
+        RespawnLocal.position = gameObject.transform.position;
         energe = 0;
     }
 

@@ -241,4 +241,5 @@ MonoBehaviour:
   Outer: {fileID: 4657149868392711913}
   startTime: 1
   durationTime: 2
-  fadeTime: 0.5
+  fadeTime: 1
+  damage: 10
