@@ -7,11 +7,11 @@ public class States : MonoBehaviour
 {
     public Image Blood, BloodBack, Shield;
     public int MaxHealth = 100, MaxShield = 100, shieldFade = 1;
-    public float fadeTime = 1f;
+    public float fadeTime = 1f, InvincibleTime = 3f;
 
     private GameObject Player;
     private int health, previousHealth, shield;
-    private float healthTimer;
+    private float healthTimer, invincibleTimer;
     private bool isShieldFade = true;
     void Start()
     {
@@ -30,26 +30,35 @@ public class States : MonoBehaviour
         HealthBackMove();
         ShieldFadeExcute();
         Shield.fillAmount = shield / MaxShield;
+        if (invincibleTimer > 0)
+        {
+            invincibleTimer -= Time.fixedDeltaTime;
+        }
     }
 
     private void HealLost(int cost)
     {
-        previousHealth = health;
-        if (health - cost > 0)
+        if (invincibleTimer <= 0)
         {
-            health -= cost;
+            previousHealth = health;
+            if (health - cost > 0)
+            {
+                health -= cost;
+            }
+            else
+            {
+                health = 0;
+                EventCenter.GetInstance().EventTrigger("À¿Õˆ");
+            }
+            //Debug.Log(cost);
+            //Debug.Log(previousHealth);
+            //Debug.Log(health);
+            invincibleTimer = InvincibleTime;
+            Blood.fillAmount = health / MaxHealth;
+            BloodBack.fillAmount = previousHealth / MaxHealth;
+            healthTimer = fadeTime;
         }
-        else
-        {
-            health = 0;
-            EventCenter.GetInstance().EventTrigger("À¿Õˆ");
-        }
-        Debug.Log(cost);
-        Debug.Log(previousHealth);
-        Debug.Log(health);
-        Blood.fillAmount = health / MaxHealth;
-        BloodBack.fillAmount = previousHealth / MaxHealth;
-        healthTimer = fadeTime;
+        
     }
 
     private void HealthBackMove()
