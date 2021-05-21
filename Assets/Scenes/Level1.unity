@@ -36127,7 +36127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1460522081
 Transform:
   m_ObjectHideFlags: 0
@@ -36206,7 +36206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daaf342d9698f434c8b77979e6dae6ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 600
   chargeAmountMin: 80
   chargeAmountMax: 100
   BossLeftPosition: {fileID: 590813212}
@@ -44572,9 +44572,9 @@ MonoBehaviour:
   isDash: 0
   isDirectionalDash: 0
   dashTime: 0.25
-  dashSpeed: 10
+  dashSpeed: 8
   canJump: 1
-  maxHoldTime: 0.25
+  maxHoldTime: 0.4
   jumpForceMin: 4
   speed: 3
   jumpSpeed: 0

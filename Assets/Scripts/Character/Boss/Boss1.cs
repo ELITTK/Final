@@ -32,7 +32,7 @@ public class Boss1 : Enemy
     private void FixedUpdate()
     {
         PhaseController();
-        UIControl();
+        UIController();
     }
 
     void PhaseController()
@@ -46,6 +46,16 @@ public class Boss1 : Enemy
             if (currentPhase == 1)
             {
                 currentPhase = 2;
+                TimeController1 = TimeController2 = 0;
+            }
+            
+            Phase2();
+        }
+        else
+        {
+            if (currentPhase == 2)
+            {
+                currentPhase = 3;
                 TimeController1 = TimeController2 = 0;
             }
             Phase1();
@@ -79,8 +89,12 @@ public class Boss1 : Enemy
             TimeController2 = 0;
         }
     }
-    private void UIControl()
+    private void UIController()
     {
         healthBar.fillAmount = health * 1f / MaxHealth;
+    }
+    private void OnDestroy()
+    {
+        UIController();
     }
 }

@@ -57,7 +57,7 @@ public class LaserSystem : MonoBehaviour
                 capCollider.enabled = false;
                 currentState = 3;
             }
-            float factor = Mathf.Pow(2, (timer - durationTime - startTime) / fadeTime) - 1;
+            float factor = 2f - Mathf.Pow(2, (timer - durationTime - startTime) / fadeTime);
             Debug.Log(factor);
             innerMat.SetColor("_Color", new Color(innerColor.r * factor, innerColor.g * factor, innerColor.b * factor));
         }
