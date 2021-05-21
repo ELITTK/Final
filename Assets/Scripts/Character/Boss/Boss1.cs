@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Boss1 : Enemy
 {
@@ -96,5 +97,10 @@ public class Boss1 : Enemy
     private void OnDestroy()
     {
         UIController();
+       
+    }
+    IEnumerator WaitForS(int s)
+    {
+        yield return new WaitForSeconds(s);
     }
 }
