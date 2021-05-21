@@ -3,7 +3,7 @@ Shader "Odds/Bullet"
     Properties
     {
         _MainTex("Texture", 2D) = "white" {}
-        [HDR]_Color("Color", Color) = (0,0,0)
+        _Color("Color", Color) = (0,0,0)
     }
     SubShader
         {

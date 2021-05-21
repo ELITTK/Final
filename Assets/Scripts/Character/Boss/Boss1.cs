@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss1 : Enemy
 {
     public Transform BossLeftPosition, BossMidPosition, BossRightPosition;
     public float damage1, phase1CD;
-    public GameObject FireMid;
-
+    public GameObject FireMid, Ui;
+    public Image healthBar;
     public float phase2CD;
     public int LaserNum;
 
@@ -22,7 +23,7 @@ public class Boss1 : Enemy
     protected override void Start()
     {
         base.Start();
-
+        Ui.SetActive(true);
         BossPosition[0] = BossRightPosition.position;
         BossPosition[1] = BossMidPosition.position;
         BossPosition[2] = BossLeftPosition.position;
@@ -31,6 +32,7 @@ public class Boss1 : Enemy
     private void FixedUpdate()
     {
         PhaseController();
+        UIControl();
     }
 
     void PhaseController()
@@ -77,5 +79,8 @@ public class Boss1 : Enemy
             TimeController2 = 0;
         }
     }
-    
+    private void UIControl()
+    {
+        healthBar.fillAmount = health * 1f / MaxHealth;
+    }
 }
