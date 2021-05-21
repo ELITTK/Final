@@ -44,6 +44,9 @@ public class States : MonoBehaviour
             health = 0;
             EventCenter.GetInstance().EventTrigger("À¿Õˆ");
         }
+        Debug.Log(cost);
+        Debug.Log(previousHealth);
+        Debug.Log(health);
         Blood.fillAmount = health / MaxHealth;
         BloodBack.fillAmount = previousHealth / MaxHealth;
         healthTimer = fadeTime;

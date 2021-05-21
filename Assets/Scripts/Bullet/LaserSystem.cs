@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class LaserSystem : MonoBehaviour
 {
     public GameObject Inner, Outer;
     public float startTime, durationTime, fadeTime;

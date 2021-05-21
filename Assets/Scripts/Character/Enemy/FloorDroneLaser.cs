@@ -26,12 +26,15 @@ public class FloorDroneLaser : BaseLaser
     protected override void DealDmg(RaycastHit hit)
     {
         //…À∫¶ÕÊº“
+        /*
         PlayerMovement playerMovement = hit.collider.gameObject.GetComponentInParent<PlayerMovement>();
         if (playerMovement)
         {
             float dmg = DmgPerSecond * Time.deltaTime;
-            playerMovement.TakeDmg(dmg);
+            Debug.Log("…‰œﬂ√ø÷°…À∫¶£∫" + dmg);
+            playerMovement.takeDmg(dmg);
         }
+        */
     }
 
     protected override bool SetIsShootingTrue()

@@ -14606,8 +14606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30051ae86eb45ee4a9eec8a02ab5a93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDmg: 30
-  isPlayerBullet: 1
+  bulletDmg: 0
   isPlayHitPS: 1
   psNeed2Open: {fileID: 7115399559992447041}
 --- !u!1 &5394584964852516193

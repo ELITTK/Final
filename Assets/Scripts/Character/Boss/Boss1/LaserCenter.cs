@@ -12,7 +12,7 @@ public class LaserCenter : MonoBehaviour
     void Start()
     {
         EventCenter.GetInstance().AddEventListener<int>("Boss2Phase1Attack", LaserExcute);
-        laserTime = LaserTypeStorage[0].GetComponentInChildren<Laser>().GetTime();
+        laserTime = LaserTypeStorage[0].GetComponentInChildren<LaserSystem>().GetTime();
     }
 
     private void FixedUpdate()
