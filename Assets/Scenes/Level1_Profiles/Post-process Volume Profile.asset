@@ -18,12 +18,12 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 3
+    value: 9.59
   aperture:
     overrideState: 1
-    value: 6.8
+    value: 1.8
   focalLength:
-    overrideState: 0
+    overrideState: 1
     value: 1
   kernelSize:
     overrideState: 1
@@ -86,7 +86,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 1.82
+    value: 2.02
   color:
     overrideState: 1
     value: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
@@ -104,7 +104,7 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 1
-    value: 1
+    value: 10
   directLightingStrength:
     overrideState: 0
     value: 0
@@ -136,10 +136,10 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.202
+    value: 0.652
   fastMode:
     overrideState: 1
-    value: 1
+    value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     overrideState: 1
-    value: 0
+    value: 25
   saturation:
     overrideState: 1
     value: 9
@@ -1602,13 +1602,13 @@ MonoBehaviour:
     value: 1
   filtering:
     overrideState: 1
-    value: {x: 54.000008, y: 99}
+    value: {x: 54, y: 99}
   minLuminance:
     overrideState: 1
-    value: 0.2
+    value: 1.1
   maxLuminance:
     overrideState: 1
-    value: 1.1
+    value: 5.27
   keyValue:
     overrideState: 1
     value: 0.8
