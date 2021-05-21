@@ -15,6 +15,11 @@ public class BulletBasic : Bullet
         gameObject.transform.position = startPoint.transform.position;
     }
 
+    private void OnEnable()
+    {
+        gameObject.transform.position = startPoint.transform.position;
+    }
+
     // Update is called once per frame
     private void FixedUpdate()
     {
@@ -37,6 +42,7 @@ public class BulletBasic : Bullet
         direction = direction.normalized;
     }
 
+    /*放到bulletScript里了
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BulletEndPoint"))
@@ -49,7 +55,7 @@ public class BulletBasic : Bullet
             other.gameObject.GetComponent<PlayerMovement>().Damage(damage);
             Destroy(gameObject);
         }
-    }
+    }*/
 
     public void SetTarget(Transform tar)
     {

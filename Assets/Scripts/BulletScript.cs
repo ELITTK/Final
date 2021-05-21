@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 管理子弹的碰撞：伤害，粒子，对象池
+/// </summary>
 public class BulletScript : MonoBehaviour
 {
     public float bulletDmg;
 
-    private float lifeTime = 1f;//一旦子弹存活超过这个时间，强制让子弹失效
+    private float lifeTime = 2.5f;//一旦子弹存活超过这个时间，强制让子弹失效
     private bool isHidden = false;//子弹是否已经执行了HideBullet，目前只参与子弹计时失效
+    public bool isPlayerBullet;//是否是玩家射出的子弹
 
     [Header("击中时的视觉效果")]
     public bool isPlayHitPS = false;//命中时是否开启特定的粒子系统
@@ -26,14 +30,31 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //碰撞事件
-        if (!collision.gameObject.CompareTag("Player"))
+        if (isPlayerBullet)
         {
-            Ready2DisableBullet();
-            Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
-            if (enemyScript)
+            //碰撞事件
+            if (!collision.gameObject.CompareTag("Player"))
             {
-                enemyScript.takeDmg(bulletDmg);
+                Ready2DisableBullet();
+                Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
+                if (enemyScript)
+                {
+                    enemyScript.takeDmg(bulletDmg);
+                }
+            }
+        }
+        else
+        {
+            //碰撞事件
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<PlayerMovement>().Damage((int)bulletDmg);
+                Ready2DisableBullet();
+                //对玩家造成伤害
+            }
+            if (collision.gameObject.CompareTag("BulletEndPoint"))
+            {
+                Ready2DisableBullet();
             }
         }
     }
@@ -41,6 +62,7 @@ public class BulletScript : MonoBehaviour
     //准备禁用子弹
     private void Ready2DisableBullet()
     {
+        CancelInvoke();
         if (!isPlayHitPS)
         {
             StopAllParticleSystem();
@@ -55,7 +77,6 @@ public class BulletScript : MonoBehaviour
     //关闭粒子系统，为禁用子弹做准备
     private void StopAllParticleSystem()
     {
-        CancelInvoke();
         if (!isHidden)
         {
             //隐藏子弹球体
@@ -73,11 +94,16 @@ public class BulletScript : MonoBehaviour
             {
                 psNeed2Open.GetComponent<ParticleSystem>().Play();
             }
+            else
+            {
+                OnParticleSystemStopped();
+            }
         }
     }
 
     private void OnParticleSystemStopped()
     {
+
         //当该物体已经没有存活的粒子时，隐藏物体以便让对象池再次调用
         //Debug:粒子在屏幕外不更新不渲染不触发这个函数，据说是元老级bug，要勾上粒子系统的submitter才能解决
         UnHideBullet();//解除子弹球体的隐藏
@@ -87,7 +113,15 @@ public class BulletScript : MonoBehaviour
             psNeed2Open.SetActive(false);
         }
 
-        gameObject.SetActive(false);
+
+        if (gameObject.transform.parent)
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void HideBullet()
@@ -102,7 +136,7 @@ public class BulletScript : MonoBehaviour
             GetComponent<Collider>().enabled = false;
         }
         GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-        GetComponent<Rigidbody>().useGravity = false;
+        //GetComponent<Rigidbody>().useGravity = false;
     }
     private void UnHideBullet()
     {
@@ -115,6 +149,6 @@ public class BulletScript : MonoBehaviour
         {
             GetComponent<Collider>().enabled = true;
         }
-        GetComponent<Rigidbody>().useGravity = true;
+        //GetComponent<Rigidbody>().useGravity = true;
     }
 }
