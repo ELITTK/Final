@@ -49,7 +49,6 @@ public class BaseLaser : MonoBehaviour
         //LineRenderer
         laser.enabled = true;
         laser.SetPosition(0, laserStartPoint);
-        //Debug.Log(transform.name + "£∫"+ transform.position);
         if (isHit)
         {
             laser.SetPosition(1, hit.point);
@@ -73,6 +72,12 @@ public class BaseLaser : MonoBehaviour
         else
         {
             DisableEffect();
+        }
+        //hitEffectLight
+        Light light = GetComponentInChildren<Light>();
+        if (light)
+        {
+            light.enabled = true;
         }
 
         //…À∫¶
@@ -132,6 +137,13 @@ public class BaseLaser : MonoBehaviour
         foreach (var AllPs in Hit)
         {
             if (AllPs.isPlaying) AllPs.Stop();
+        }
+
+        //hitEffectLight
+        Light light = GetComponentInChildren<Light>();
+        if (light)
+        {
+            light.enabled = false;
         }
     }
 
