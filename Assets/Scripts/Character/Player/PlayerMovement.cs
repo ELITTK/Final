@@ -20,15 +20,16 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("战斗")]
     public float attackCD;
-    public int energeMax, healMax;
+    public int energeMax;
+    public float healthMax;
 
     private bool isJump, resetJumpFlag, resetJumpTimeFlag;
-    private Transform RespawnLocal;
     private Animator animator;
     private Rigidbody rigidbd;
     private float horizontalMove, verticalMove;
     private float attackCDTimer;
-    private int health, energe;
+    private float health;
+    private int energe;
     
     // Start is called before the first frame update
     void Start()
@@ -36,12 +37,11 @@ public class PlayerMovement : MonoBehaviour
         InputMgr.GetInstance().StartOrEndCheck(true);
         EventCenter.GetInstance().AddEventListener<KeyCode>("某键按下", JudgementCenter);
         EventCenter.GetInstance().AddEventListener<int>("能量获取", EnergeCharge);
-        EventCenter.GetInstance().AddEventListener("死亡", Death);
         //EventCenter.GetInstance().AddEventListener("地面检测", ResetJump);
         animator = GetComponent<Animator>();
         rigidbd = GetComponent<Rigidbody>();
-        RespawnLocal.position = transform.position;
         energe = 0;
+        health = healthMax;
     }
 
     // Update is called once per frame
@@ -160,10 +160,6 @@ public class PlayerMovement : MonoBehaviour
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             EventCenter.GetInstance().EventTrigger<int>("伤害", bullet.damage);
         }
-        else if (other.gameObject.CompareTag("RespawnPoint"))
-        {
-            RespawnLocal.position = transform.position;
-        }
     }
 
     private void ResetJump()
@@ -209,9 +205,12 @@ public class PlayerMovement : MonoBehaviour
             energe += energeNum;
         }
     }
-    private void Death()
-    {
-        transform.position = RespawnLocal.position;
 
+    public void TakeDmg(float dmg)
+    {
+        health -= dmg;
+        //为了演示所以没做死亡
+        EventCenter.GetInstance().EventTrigger("玩家受到伤害");
+        Debug.Log("玩家血量：" + health);
     }
 }
